@@ -13,13 +13,16 @@ void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node = *stack, *current;
 
-	(void)line_number;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	current = *stack;
-	while (current->next != NULL)
-		current = current->next;
-	current->next = node;
-	node->next = NULL;
-	node->prev = current;
+	if (node != NULL && node->next != NULL)
+	{
+		(void)line_number;
+		*stack = (*stack)->next;
+		(*stack)->prev = NULL;
+		current = *stack;
+		while (current->next != NULL)
+			current = current->next;
+		current->next = node;
+		node->next = NULL;
+		node->prev = current;
+	}
 }
