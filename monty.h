@@ -54,8 +54,9 @@ typedef struct info_s
 	int lif;
 } info_t;
 extern info_t info;
-void push(stack_t **head, unsigned int count);
-void pall(stack_t **head, unsigned int count);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
 void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);

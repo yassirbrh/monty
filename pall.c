@@ -4,17 +4,17 @@
  *
  * Description: Prints all the elements in the stack.
  *
- * @head: Head of stack
- * @count: Line number (Not used in this case).
+ * @stack: Head of stack
+ * @line_number: Line number (Not used in this case).
  *
  * Return: No return because it's a void function.
  */
-void pall(stack_t **head, unsigned int count)
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node;
-	(void)count;
+	(void)line_number;
 
-	node = *head;
+	node = *stack;
 	if (node == NULL)
 		return;
 	while (node != NULL)

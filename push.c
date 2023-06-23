@@ -2,12 +2,12 @@
 /**
  * push -  Function
  *
- * @head: Head of stack.
- * @count: Line counter.
+ * @stack: Head of stack.
+ * @line_number: Line counter.
  *
  * Return: No return because it's a void function.
  */
-void push(stack_t **head, unsigned int count)
+void push(stack_t **stack, unsigned int line_number)
 {
 	int i, j = 0, n, flag = 0;
 
@@ -22,24 +22,24 @@ void push(stack_t **head, unsigned int count)
 		}
 		if (flag == 1)
 		{
-			fprintf(stderr, "L%d: usage: push integer\n", count);
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			fclose(info.fp);
 			free(info.line);
-			free_stack(*head);
+			free_stack(*stack);
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", count);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		fclose(info.fp);
 		free(info.line);
-		free_stack(*head);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	n = atoi(info.arg);
 	if (info.lif == 0)
-		addnode(head, n);
+		addnode(stack, n);
 	else
-		addqueue(head, n);
+		addqueue(stack, n);
 }
