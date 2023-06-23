@@ -17,7 +17,7 @@ int exec_op(char *line, stack_t **stack, unsigned int count, FILE *fp)
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 		{"swap", swap}, {"add", add}, {"nop", nop}, {"sub", sub},
 		{"div", _div}, {"mul", mul}, {"mod", mod}, {"pchar", pchar},
-		{NULL, NULL}
+		{"pstr", pstr}, {NULL, NULL}
 	};
 	unsigned int i = 0;
 	char *op;
