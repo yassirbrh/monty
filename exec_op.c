@@ -16,7 +16,7 @@ int exec_op(char *line, stack_t **stack, unsigned int count, FILE *fp)
 	instruction_t ops[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 		{"swap", swap}, {"add", add}, {"nop", nop}, {"sub", sub},
-		{NULL, NULL}
+		{"div", _div}, {NULL, NULL}
 	};
 	unsigned int i = 0;
 	char *op;
