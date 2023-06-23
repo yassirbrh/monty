@@ -3,4 +3,6 @@ push 2
 push 10
 push 5
 div
+push 89
+pchar
 pall
