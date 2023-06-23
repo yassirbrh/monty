@@ -39,9 +39,7 @@ char *strdup(const char *str)
 {
 	size_t len = strlen(str);
 	char *new_str;
-
-	if (str == NULL)
-		return (NULL);
+	
 	new_str = malloc((len + 1) * sizeof(char));
 	if (new_str == NULL)
 		return (NULL);
