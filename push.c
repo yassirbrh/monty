@@ -1,50 +1,45 @@
 #include "monty.h"
 /**
- * push - Function
+ * push -  Function
  *
- * Description: Push a node to a stack.
+ * @head: Head of stack.
+ * @count: Line counter.
  *
- * @stack: Pointer to the pointer to the stack.
- * @line_number: Line number of the command in the monty file.
- *
- * Return: No return because it's a void function
+ * Return: No return because it's a void function.
  */
-void push(stack_t **stack, unsigned int line_number)
+void push(stack_t **head, unsigned int count)
 {
-	FILE *fp;
-	char line[100];
-	stack_t *new;
-	unsigned int line_num = 1;
-	char **op_arr;
+	int i, j = 0, n, flag = 0;
 
-	memset(line, '\0', 100);
-	fp = fopen(filename, "r");
-	while (fgets(line, sizeof(line), fp) != NULL)
+	if (info.arg)
 	{
-		if (line_number == line_num)
-			op_arr = extractTokens(line);
-		line_num++;
+		if (info.arg[0] == '-')
+			j++;
+		for (i = j; info.arg[i] != '\0'; i++)
+		{
+			if (info.arg[i] > 57 || info.arg[i] < 48)
+				flag = 1;
+		}
+		if (flag == 1)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", count);
+			fclose(info.fp);
+			free(info.line);
+			free_stack(*head);
+			exit(EXIT_FAILURE);
+		}
 	}
-	if (is_int(op_arr[1]) == 0)
+	else
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		free_all_strings(op_arr);
-		free_stack(*stack);
-		fclose(fp);
+		fprintf(stderr, "L%d: usage: push integer\n", count);
+		fclose(info.fp);
+		free(info.line);
+		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	fclose(fp);
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free_all_strings(op_arr);
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
-	new->n = atoi(op_arr[1]);
-	new->prev = NULL;
-	new->next = *stack;
-	*stack = new;
-	free_all_strings(op_arr);
+	n = atoi(info.arg);
+	if (info.lif == 0)
+		addnode(head, n);
+	else
+		addqueue(head, n);
 }

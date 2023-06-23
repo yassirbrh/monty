@@ -1,41 +1,22 @@
 #include "monty.h"
 /**
- * free_all_strings - Function
- *
- * Description: Free all the array elements and the array.
- *
- * @arr: Pointer to the array of strings.
- *
- * Return: No return because it's a void function.
- */
-void free_all_strings(char **arr)
-{
-	int i = 0;
-
-	while (arr[i] != NULL)
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
-/**
  * free_stack - Function
  *
- * Description: Free the stack, and it's elements.
+ * Description: Frees a linked list.
  *
- * @stack: Pointer to the stack.
+ * @head: Head of the stack.
  *
  * Return: No return because it's a void function.
  */
-void free_stack(stack_t *stack)
+void free_stack(stack_t *head)
 {
-	stack_t *node = stack, *prev;
+	stack_t *node;
 
-	while (node != NULL)
+	node = head;
+	while (head)
 	{
-		prev = node;
-		node = node->next;
-		free(prev);
+		head = head->next;
+		free(node);
+		node = head;
 	}
 }
