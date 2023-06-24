@@ -11,19 +11,17 @@
  */
 void rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *node;
+	stack_t *node = *stack;
 
 	(void)line_number;
 	if (*stack != NULL && (*stack)->next != NULL)
 	{
-		while (*stack != NULL)
-		{
-			node = *stack;
-			*stack = (*stack)->next;
-			node->next = node->prev;
-			node->prev = *stack;
-		}
-		if (*stack == NULL)
-			*stack = node;
+		while (node->next != NULL)
+			node = node->next;
+		node->prev->next = node->next;
+		node->prev = NULL;
+		node->next = *stack;
+		(*stack)->prev = node;
+		*stack = node;
 	}
 }
