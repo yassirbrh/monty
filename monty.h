@@ -43,7 +43,7 @@ typedef struct instruction_s
  * @arg: value
  * @fp: pointer to monty file
  * @line: line content
- * @lif: flag change queue <-> stack
+ * @flag: flag change queue <-> stack
  * Description: stores values through the program.
  */
 typedef struct info_s
@@ -51,7 +51,7 @@ typedef struct info_s
 	char *arg;
 	FILE *fp;
 	char *line;
-	int lif;
+	int flag;
 } info_t;
 extern info_t info;
 void push(stack_t **stack, unsigned int line_number);
@@ -69,8 +69,10 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
-void free_stack(stack_t *head);
-void addnode(stack_t **head, int n);
-void addqueue(stack_t **head, int n);
+void queue(stack_t **stack, unsigned int line_number);
+void _stack(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t *stack);
+void addnode(stack_t **stack, int n);
+void addqueue(stack_t **stack, int n);
 int exec_op(char *line, stack_t **stack, unsigned int count, FILE *fp);
 #endif /* MONTY_H */

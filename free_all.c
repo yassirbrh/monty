@@ -4,19 +4,19 @@
  *
  * Description: Frees a linked list.
  *
- * @head: Head of the stack.
+ * @stack: Head of the stack.
  *
  * Return: No return because it's a void function.
  */
-void free_stack(stack_t *head)
+void free_stack(stack_t *stack)
 {
 	stack_t *node;
 
-	node = head;
-	while (head)
+	node = stack;
+	while (stack != NULL)
 	{
-		head = head->next;
+		stack = stack->next;
 		free(node);
-		node = head;
+		node = stack;
 	}
 }

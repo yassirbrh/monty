@@ -38,7 +38,7 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	n = atoi(info.arg);
-	if (info.lif == 0)
+	if (info.flag == 0)
 		addnode(stack, n);
 	else
 		addqueue(stack, n);

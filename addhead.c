@@ -4,14 +4,14 @@
  *
  * Description: Add node to the head of stack.
  *
- * @head: Head of stack.
+ * @stack: Head of stack.
  * @n: Value to add in the node.
  *
  * Return: No return because it's a void function.
  */
-void addnode(stack_t **head, int n)
+void addnode(stack_t **stack, int n)
 {
-	stack_t *new, *node = *head;
+	stack_t *new, *node = *stack;
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
@@ -22,7 +22,7 @@ void addnode(stack_t **head, int n)
 	if (node != NULL)
 		node->prev = new;
 	new->n = n;
-	new->next = *head;
+	new->next = *stack;
 	new->prev = NULL;
-	*head = new;
+	*stack = new;
 }

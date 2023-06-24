@@ -1,17 +1,17 @@
 #include "monty.h"
 /**
- * f_queue - Function
+ * queue - Function
  *
- * @head: stack head
- * @count: line_number
+ * @stack: stack head
+ * @line_number: line_number
  *
  * Return: No return because it's a void function.
  */
-void f_queue(stack_t **head, unsigned int count)
+void queue(stack_t **stack, unsigned int line_number)
 {
-	(void)head;
-	(void)count;
-	info.lif = 1;
+	(void)stack;
+	(void)line_number;
+	info.flag = 1;
 }
 
 /**
@@ -20,15 +20,15 @@ void f_queue(stack_t **head, unsigned int count)
  * Description: add node to the tail of list.
  *
  * @n: New value
- * @head: Head of the stack
+ * @stack: Head of the stack
  *
  * Return: No return because it's a void function.
  */
-void addqueue(stack_t **head, int n)
+void addqueue(stack_t **stack, int n)
 {
 	stack_t *new, *node;
 
-	node = *head;
+	node = *stack;
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
@@ -44,7 +44,7 @@ void addqueue(stack_t **head, int n)
 	}
 	if (!node)
 	{
-		*head = new;
+		*stack = new;
 		new->prev = NULL;
 	}
 	else
