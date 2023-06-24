@@ -14,9 +14,13 @@ void rotr(stack_t **stack, unsigned int line_number)
 	stack_t *node;
 
 	(void)line_number;
-	while ((*stack)->next != NULL)
+	while (*stack != NULL)
 	{
 		node = *stack;
 		*stack = (*stack)->next;
+		node->next = node->prev;
+		node->prev = *stack;
 	}
+	if (*stack == NULL)
+		*stack = node;
 }
